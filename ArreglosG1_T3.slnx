@@ -1,1 +1,4 @@
-<Solution />
+<Solution>
+  <Project Path="Arreglos.UI.Consola/Arreglos.UI.Consola.csproj" Id="aac8b417-47c1-4b21-8ff9-8925fdeaf0d5" />
+  <Project Path="ArreglosLogica/ArreglosLogica.csproj" Id="db1651db-9cea-4d5c-a192-0defd585d97b" />
+</Solution>
