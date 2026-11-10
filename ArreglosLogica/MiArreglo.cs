@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Arreglos.Logica
@@ -10,6 +11,7 @@ namespace Arreglos.Logica
         //Atributos o campos
         private int _tope;
         private int[] _arreglo;
+        private int i;
 
         //Constructor
         public MiArreglo(int n)
@@ -26,6 +28,10 @@ namespace Arreglos.Logica
 
         //Métodos
         //Metodo llenar
+        public void Llenar()
+        {
+            Llenar(1, 100);
+        }
         public void Llenar(int minimo, int maximo)
         {
             Random oRandom = new Random();
@@ -151,6 +157,30 @@ namespace Arreglos.Logica
         }
 
 
+        public MiArreglo ObtenerPares ()
+        {
+            int contadorPares = 0;
+            for(int i = 0; i < -_tope; i++)
+            {
+                if (-_arreglo[i]% 2 ==0)
+                {
+                    contadorPares++;
+                }
+            }
+
+            var arregloPares = new MiArreglo(contadorPares);
+
+            for (int i = 0; i < -_tope; i++)
+            {
+                if (-_arreglo[i] % 2 == 0)
+                {
+                    arregloPares.Agregar(_arreglo[i]);
+                }
+            }
+                return arregloPares;
+        }
+
+
 
         //Método ToString
 
@@ -164,11 +194,11 @@ namespace Arreglos.Logica
 
             String cadena = string.Empty;
             int contador = 0;
+            string salida = $"{_arreglo[i]}\t";
 
             for (int i = 0; i < _tope; i++)
             {
-                //cadena = cadena + _arreglo[i]
-                cadena += $"{_arreglo[i]}\t";
+                salida += $"{_arreglo[i]}\t";
                 contador++;
 
                 if (contador > 9)
