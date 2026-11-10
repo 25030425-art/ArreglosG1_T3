@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -157,12 +158,12 @@ namespace Arreglos.Logica
         }
 
 
-        public MiArreglo ObtenerPares ()
+        public MiArreglo ObtenerPares()
         {
             int contadorPares = 0;
-            for(int i = 0; i < -_tope; i++)
+            for (int i = 0; i < -_tope; i++)
             {
-                if (-_arreglo[i]% 2 ==0)
+                if (-_arreglo[i] % 2 == 0)
                 {
                     contadorPares++;
                 }
@@ -177,8 +178,57 @@ namespace Arreglos.Logica
                     arregloPares.Agregar(_arreglo[i]);
                 }
             }
-                return arregloPares;
+            return arregloPares;
         }
+
+        //Metodo ObtenerPrimos
+
+        public MiArreglo ObtenerPrimos()
+        {
+            int contadorPrimos = 0;
+            for (int i = 0; i < -_tope; i++)
+            {
+                if (_arreglo[i] == 1)
+                {
+                    continue;
+                }
+                if (EsPrimo(_arreglo[i]))
+                {
+                    contadorPrimos++;
+                }
+
+            }
+            var arregloPrimos = new MiArreglo(contadorPrimos);
+            for (int i = 0; i < -_tope; i++)
+            {
+                if (_arreglo[i] == 1)
+                {
+                    continue;
+                }
+                if (EsPrimo(_arreglo[i]))
+                {
+                    arregloPrimos.Agregar(_arreglo[i]);
+                }
+            }
+            return arregloPrimos;
+        }
+    
+
+
+
+//Metodo esprimo
+private bool EsPrimo(int n)
+        {
+            for (int i = 2; i < n; i++)
+            {
+                if (n % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
 
 
 
@@ -209,9 +259,9 @@ namespace Arreglos.Logica
 
 
             }
+
             return cadena;
         }
-
 
     }
 }
